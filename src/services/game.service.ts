@@ -56,6 +56,7 @@ export class GameService {
 
     const game = new this.GameModel({
       board,
+      solutionBoard: board,
       difficulty,
       type,
       user: userId,
@@ -68,12 +69,11 @@ export class GameService {
   async updateGameCell(gameId: string, i: number, j: number, value: number) {
     const game = await this.findById(gameId);
     if (game) {
-      const board = JSON.parse(JSON.stringify(game.board));
+      const solutionBoard = JSON.parse(JSON.stringify(game.solutionBoard));
 
-      if (board[i][j] !== value) {
-        board[i][j] = value;
-        game.board = board;
-        console.log(game.board);
+      if (solutionBoard[i][j] !== value) {
+        solutionBoard[i][j] = value;
+        game.solutionBoard = solutionBoard;
 
         await game.save();
       }

@@ -47,8 +47,6 @@ export class GameGateway
     @MessageBody() data: ChangeCellMessage,
     @ConnectedSocket() client: Socket,
   ) {
-    console.log(data);
-
     this.gameService.updateGameCell(data.gameId, data.i, data.j, data.value);
 
     this.server.to(client.id).emit('change-cell-result', {

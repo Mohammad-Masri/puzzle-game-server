@@ -8,6 +8,7 @@ export interface IGame {
   type: GameTypes;
   difficulty: GameDifficulties;
   board: any;
+  solutionBoard: any;
   isRunning: boolean;
   durationInMinutes: number;
   scour: number;
@@ -20,6 +21,7 @@ export const GameSchema = new mongoose.Schema(
     type: { type: String, enum: GameTypes },
     difficulty: { type: String, enum: GameDifficulties },
     board: { type: Object },
+    solutionBoard: { type: Object },
     isRunning: { type: Boolean, default: true },
     durationInMinutes: Number,
     scour: { type: Number, default: 0 },
