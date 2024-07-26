@@ -2,6 +2,7 @@ import { GameDifficulties } from 'src/config/server.config';
 
 interface GameGenerator {
   generateBoard(difficulty: GameDifficulties): any;
+  checkValidity(board: any): boolean;
 }
 
 export class SudokuGameHelper implements GameGenerator {
@@ -89,5 +90,11 @@ export class SudokuGameHelper implements GameGenerator {
 
     const board = generateBoard();
     return removeCells(board, difficulty);
+  }
+
+  checkValidity(board: any) {
+    const nBoard: number[][] = board;
+
+    return true;
   }
 }
